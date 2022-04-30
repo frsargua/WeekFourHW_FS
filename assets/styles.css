@@ -65,12 +65,12 @@ main{
 }
 /* Footer */
 footer{
-
+padding: 1rem 0;
 text-align: center;
 }
 
 .footer-container{
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
 }
