@@ -13,3 +13,23 @@ body{
     color: var(--secondary-font-color);
 }
 
+/* Header */
+header{
+    padding: 0.5rem 1rem;
+}
+
+/* Navbar */
+/* Making the navbar be in a row */
+.navbar{
+display: flex;
+justify-content: space-between;
+}
+
+.navbar-options{
+    display: flex;
+}
+
+.navbar-options li{
+    padding-left: 2rem;
+    list-style: none;
+}
