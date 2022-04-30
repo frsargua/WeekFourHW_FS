@@ -31,6 +31,7 @@ header {
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-options {
@@ -47,13 +48,16 @@ header {
 main {
   flex: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--darkblue);
 }
 
-.quest-landing {
+.quest-landing, .quest-quizz {
   width: 60%;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
 .quest-landing h2 {
@@ -63,17 +67,24 @@ main {
   padding: 1rem 0;
   font-size: 1.2rem;
 }
-
+/* removed Li decoration */
+.quest-quizz li {
+  list-style: none;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+/* Styles the button */
 .quest-button {
   padding: 0.5rem 2.5rem;
   border-radius: 10px;
 }
+
+/* ______-------_______------ */
 /* Footer */
 footer {
   padding: 1rem 0;
   text-align: center;
   background-color: var(--blue);
-
 }
 
 .footer-container {
@@ -82,7 +93,7 @@ footer {
   flex-direction: column;
 }
 
-.footer-container > a{
-    color: var(--primary-font-color);
-    text-decoration: none;
+.footer-container > a {
+  color: var(--primary-font-color);
+  text-decoration: none;
 }
