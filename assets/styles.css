@@ -3,9 +3,8 @@
   --secondary-font-color: #000;
   --blue: #0c3559;
   --darkblue: #092640;
-  --seablue: #687b8c;
   --lightseablue: #aab9bf;
-  --light: #f2f2f2;
+  --light: #f1f1f1;
 }
 * {
   padding: 0;
@@ -13,9 +12,10 @@
 }
 
 body {
+  font-family: 'Inter',Arial,Helvetica,sans-serif;
   display: flex;
   flex-direction: column;
-  color: var(--secondary-font-color);
+
   min-height: 100vh;
   color: var(--primary-font-color);
 }
@@ -24,6 +24,15 @@ body {
 header {
   padding: 0.5rem 1rem;
   background-color: var(--blue);
+}
+header h1{
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+header h1:hover{
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 /* Navbar */
@@ -34,15 +43,35 @@ header {
   align-items: center;
 }
 
-.navbar-options {
+.navbar .navbar-options {
   display: flex;
+  color: var(--secondary-font-color);
 }
 
-.navbar-options li {
-  padding-left: 2rem;
+.navbar .navbar-options li {
+  margin-left: 1rem;
   list-style: none;
+  font-weight: bold;
+}
+#scoreContainer,#countDown{
+  background-color: white;
+  width: 90px;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  text-align: center;
 }
 
+
+@media screen and (max-width: 768px) {
+  header{
+    background-color:var(--primary-font-color);
+    color: var(--darkblue);
+  }
+  #scoreContainer,#countDown{
+    background-color: var(--blue);
+    color: var(--light);
+  }
+}
 /* Main */
 
 main {
@@ -54,35 +83,141 @@ main {
   color: var(--darkblue);
 }
 
-.quest-landing, .quest-quizz {
+.landing-page,.quest-quiz{
   width: 60%;
   text-align: center;
-  padding: 2rem 1rem;
 }
 
-.quest-landing h2 {
+.landing-page h2 {
   font-size: 2.4rem;
 }
-.quest-landing h3 {
-  padding: 1rem 0;
-  font-size: 1.2rem;
+.landing-page h3 {
+  padding: 0.5rem 0 2rem 0;
+  font-weight: 600;
+}
+
+.quest-quiz ul{
+  padding-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .quest-landing,.quest-quiz, .feedback-form-section{
+    width: 90%;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar h1, .navbar nav{
+    padding-bottom: 1rem;
+  }
+
+
 }
 /* removed Li decoration */
-.quest-quizz li {
+.quest-quiz ul li {
   list-style: none;
   text-decoration: none;
   padding: 0.5rem 0;
+  width: 35%;
+  margin: auto;
+}
+.quest-quiz li:hover{
+  background-color: var(--light);
+  cursor: pointer;
 }
 /* Styles the button */
-.quest-button {
+.button {
+
   padding: 0.5rem 2.5rem;
   border-radius: 10px;
+  background-color: var(--light);
+  outline: none;
+  border: 2px solid var(--lightseablue);
+}
+.button:hover ,.button:focus{
+  transform: scale(1.05);
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-/* ______-------_______------ */
+
+@media screen and (max-width: 768px) {
+  .quest-quiz ul li{
+    width: 80%;
+  }
+}
+/* Form */
+
+.feedback-form-section{
+  text-align: center;
+}
+
+.feedback-form-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-form-section form div{
+  margin-top: 1rem;
+}
+
+.feedback-form-section form div #full-name{
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px dashed var(--lightseablue);
+
+}
+
+
+/* Score Section Styling */
+/* THe section should take 100% of the width */
+
+/* table takes 40% width in desktop and centers the text inside the table*/
+#score-board > table{
+margin: auto;
+width: 40vw;
+text-align: center;
+}
+
+/* Spacing out the rows inside the table */
+/* table head */
+th{
+  padding-bottom: 1rem;
+}
+/* table data */
+td{
+  padding: 0.5rem 0;
+}
+
+/* Action buttons container */
+.form-buttons{
+  /* Flex allows us to center the buttons */
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.noData{
+  margin-top: 2rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.clearButton{
+  margin-left: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* Table takes 80 of the  */
+  #score-board > table{
+    width: 80vw;
+  }
+}
+
 /* Footer */
 footer {
-  padding: 1rem 0;
   text-align: center;
   background-color: var(--blue);
 }
@@ -96,4 +231,14 @@ footer {
 .footer-container > a {
   color: var(--primary-font-color);
   text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.footer-container > a > i{
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+.footer-container > a:hover{
+  transform: scale(1.05);
 }
