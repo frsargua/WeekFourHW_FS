@@ -5,49 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/c6e9c752f1.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Header - Navbar -->
     <header class="navbar">
-      <h1 class="navbar-Q-Number">Current Question</h1>
+      <h1 id="HighScoreButton" class="navbar-Q-Number">High score</h1>
       <nav class="navbar-options">
-        <li>Score</li>
+        <li id="scoreContainer">Score <span id="score">...</span></li>
         <li id="countDown">Time left</li>
       </nav>
     </header>
 
     <!-- Main -->
-    <main>
-      <section id="quest-landing" class="quest-landing">
-        <h2 class="quest-landing-header">Coding Challenge</h2>
+    <main id="main">
+      <section id="landing-page" class="landing-page">
+        <h2 class="quest-landing-header">Short Quizz</h2>
         <h3 class="quest-landing-description">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
-          impedit officiis modi, ullam consequuntur distinctio ab quos quisquam
-          odio omnis!
+          You got 20 seconds to complete this basic quiz.
         </h3>
-        <button id="quizz-action-button" class="quest-button">Start</button>
-      </section>
-
-      <section class="quest-quizz">
-        <h2 id="question" class="quest-landing-header">Question One</h2>
-
-        <ul class="quest-options">
-          <li class="list-item" data-value="A">A</li>
-          <li class="list-item" data-value="B">B</li>
-          <li class="list-item" data-value="C">C</li>
-          <li class="list-item" data-value="D">D</li>
-        </ul>
+        <button id="quizz-action-button" class="button">Start</button>
       </section>
     </main>
     <!-- Footer -->
     <footer>
-      <h4>This is an homework task!</h4>
       <div class="footer-container">
-        <a href="#">Github</a>
-        <a href="#">LinkedIn</a>
+        <a href="https://github.com/frsargua"><i class="fa-brands fa-github"></i
+          >Github</a>
+        <a href="https://www.linkedin.com/feed/"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
       </div>
     </footer>
   </body>
-  <script src="/assets/javascript.js"></script>
+  <script src="./assets/javascript.js"></script>
 </html>
