@@ -11,32 +11,32 @@ const questions = [
   {
     question: "Where it the University of Birmingham?",
     correct: "Birmingham",
-    answers: ["Manchester","Birmingham", "Leeds"],
+    answers: ["Manchester", "Birmingham", "Leeds"],
   },
   {
     question: "When did the UK leave the EU?",
     correct: 2020,
-    answers: [2018,2020,2000],
+    answers: [2018, 2020, 2000],
   },
   {
     question: "Where it the University of Manchester?",
     correct: "UK",
-    answers: ["USA", "Germany",'UK'],
+    answers: ["USA", "Germany", "UK"],
   },
   {
     question: "How is the weather in the UK during winter?",
     correct: "COLD",
-    answers: ["COLD","WARM", "HOT"],
+    answers: ["COLD", "WARM", "HOT"],
   },
   {
     question: "what is the cleanest mode of transport?",
     correct: "TRAM",
-    answers: ["CAR", "BUS","TRAM"],
+    answers: ["CAR", "BUS", "TRAM"],
   },
   {
     question: "when will the common wealth games take place in Birmingham?",
     correct: "2022",
-    answers: ["2024", "2022","2300"],
+    answers: ["2024", "2022", "2300"],
   },
 ];
 
@@ -66,19 +66,19 @@ const renderQuestion = () => {
   const ul = document.createElement("ul");
 
   // Creates 3 list elements and adds its attributes
-    // First list item
+  // First list item
   const li1 = document.createElement("li");
   li1.setAttribute("class", "list-item");
   li1.setAttribute("data-value", questions[questionIndex].answers[0]);
   li1.textContent = questions[questionIndex].answers[0];
 
-    // Second list item
+  // Second list item
   const li2 = document.createElement("li");
   li2.setAttribute("class", "list-item");
   li2.setAttribute("data-value", questions[questionIndex].answers[1]);
   li2.textContent = questions[questionIndex].answers[1];
 
-    // Third list item
+  // Third list item
   const li3 = document.createElement("li");
   li3.setAttribute("class", "list-item");
   li3.setAttribute("data-value", questions[questionIndex].answers[2]);
@@ -99,7 +99,6 @@ const renderQuestion = () => {
 
 /* Creates a form section with javascript and appends it to the main element in index.html.*/
 const renderForm = () => {
-
   // This line checks if the function is running
   console.log("render form");
 
@@ -143,7 +142,7 @@ const renderForm = () => {
   mainEl.append(section);
 
   /* handleFormSubmit saves the user and their score to the local storage and loads the score board.
-  */
+   */
   form.addEventListener("submit", handleFormSubmit);
 };
 
@@ -151,15 +150,15 @@ const renderForm = () => {
 const renderScoreTable = () => {
   // Logs message to check function is getting called.
   console.log("Score table");
-  
-  //Creating section element and adding id. 
+
+  //Creating section element and adding id.
   const section = document.createElement("section");
   section.setAttribute("id", "score-board");
 
   // Creating table
   const table = document.createElement("table");
-  table.setAttribute("rules","rows");
-  
+  table.setAttribute("rules", "rows");
+
   // Creating table head, its row and its columns.
   const thead = document.createElement("thead");
   const tableRowHead = document.createElement("tr");
@@ -167,11 +166,10 @@ const renderScoreTable = () => {
   thName.textContent = "NAME";
   const thScore = document.createElement("th");
   thScore.textContent = "SCORE";
-  
+
   // Creating table body to which the results will be uploaded.
   const tbody = document.createElement("tbody");
-  
-  
+
   // Creating buttons for clearing and restarting the quiz.
   const formButtonsContainer = document.createElement("div");
   formButtonsContainer.setAttribute("class", "form-buttons");
@@ -180,15 +178,14 @@ const renderScoreTable = () => {
   const tryAgainButton = document.createElement("button");
   tryAgainButton.textContent = "Home";
   tryAgainButton.setAttribute("onclick", "window.location.reload()");
-  tryAgainButton.setAttribute("class", 'button');
+  tryAgainButton.setAttribute("class", "button");
 
   // Creating clear button.
   const clearScoresButton = document.createElement("button");
   clearScoresButton.textContent = "Clear";
   clearScoresButton.setAttribute("onclick", 'deleteLS("usersScores")');
-  clearScoresButton.setAttribute("class", 'button clearButton');
-  
-  
+  clearScoresButton.setAttribute("class", "button clearButton");
+
   // Appending subsections into their corresponding sections.
   tableRowHead.append(thName, thScore);
   thead.append(tableRowHead);
@@ -198,7 +195,7 @@ const renderScoreTable = () => {
   mainEl.append(section);
 
   // This function creates rows to add the score from the previous users.
-  addUsersScores(tbody,section);
+  addUsersScores(tbody, section);
 };
 
 const handleFormSubmit = (event) => {
@@ -234,31 +231,29 @@ const handleFormSubmit = (event) => {
   }
 };
 
-
 // Create rows for scores
 
-const addUsersScores = (element,section) => {
-  console.log("Adding Users' scores")
+const addUsersScores = (element, section) => {
+  console.log("Adding Users' scores");
 
   // This objectsorter function takes the object form of all the scores and sorts them in ascending order.
   const sortedArray = objectSorter();
 
   // If the arrays, from which the data is getting pulled, is empty. A message will pop out saying there is no data.
-  if(sortedArray.length==0){
+  if (sortedArray.length == 0) {
     const messageH2 = document.createElement("h2");
-    messageH2.textContent = 'No results recorded!'
+    messageH2.textContent = "No results recorded!";
     messageH2.setAttribute("class", "noData");
     section.append(messageH2);
     return;
   }
 
-
-  for (let i = sortedArray.length-1; 0 <= i; i--) {
+  for (let i = sortedArray.length - 1; 0 <= i; i--) {
     let newArr = Object.values(sortedArray[i]);
     // This for loop creates a new tr element to which td elements are added.
     const tr = document.createElement("tr");
     const tdUserName = document.createElement("td");
-    tdUserName.textContent = newArr[0];//at [0] you have the username
+    tdUserName.textContent = newArr[0]; //at [0] you have the username
     const tdUserScore = document.createElement("td");
     tdUserScore.textContent = newArr[1]; //at [1] you have the user's score.
     // Appends td's to tr
@@ -286,29 +281,36 @@ const handleOptionClick = (event) => {
     if (value == questions[questionIndex].correct) {
       score++;
       scoreRecorder();
-      console.log("Current score:"+" "+score);
+      console.log("Current score:" + " " + score);
     } else {
       reduceTime();
     }
 
-
     // Removes the question section before form is rendered.
-    setTimeout(removeQuestion,300)
-
+    // setTimeout(removeQuestion,200)
 
     // this section of code updates the question.
     if (questionIndex < questions.length - 1) {
       // increment the question index by 1
       questionIndex += 1;
-      setTimeout(renderQuestion,300)
-            // renderQuestion();
+      console.log("bug two");
+      delQuesIfFormRenders();
+      setTimeout(renderQuestion, 350);
     } else {
       // if this iteration was for the last question, then render results and form
       renderForm();
       // Clears counter
       countDownZero();
     }
-    
+    console.log("bug fixed?");
+    setTimeout(removeQuestion, 351);
+  }
+};
+
+const delQuesIfFormRenders = () => {
+  console.log("bug three");
+  if (document.getElementById("feedback-form")) {
+    renderQuestion();
   }
 };
 
@@ -355,40 +357,40 @@ const deleteLS = (key) => {
 
 const showHighScore = () => {
   // If the score board is already rendered, nothing happens.
-  if(document.getElementById("score-board")){
+  if (document.getElementById("score-board")) {
     return;
   }
   // If questions section is not rendered, remove banner or form
-  if(!document.getElementById("quest-container")){
-      removeBanner();
-      if(document.getElementById("feedback-form")){
-        document.getElementById("feedback-form").remove();
-      }
-  }else{
+  if (!document.getElementById("quest-container")) {
+    removeBanner();
+    if (document.getElementById("feedback-form")) {
+      document.getElementById("feedback-form").remove();
+    }
+  } else {
     removeQuestion();
   }
-  console.log('removing');
+  console.log("removing");
   countDownZero();
   renderScoreTable();
-}
-
+};
 
 // Function that takes usersScores
 const objectSorter = () => {
-  console.log('ObjectSorter')
+  console.log("ObjectSorter");
   const finalResults = JSON.parse(localStorage.getItem("usersScores"));
 
   var arr = [];
   console.log(arr);
-  if(finalResults){
-  keys = Object.keys(finalResults);
+  if (finalResults) {
+    keys = Object.keys(finalResults);
 
-  for (var i = 0, n = keys.length; i < n; i++) {
-    var key = keys[i];
-    arr[key] = finalResults[key];
-  }
-  return arraySorter(arr);
-  }else{
+    for (var i = 0, n = keys.length; i < n; i++) {
+      var key = keys[i];
+      arr[key] = finalResults[key];
+    }
+
+    return arraySorter(arr);
+  } else {
     return [];
   }
 };
@@ -422,9 +424,9 @@ const removeBanner = () => {
 // Remove questionl
 const removeQuestion = () => {
   console.log("remove question");
-  if(document.getElementById("quest-container")){
+  if (document.getElementById("quest-container")) {
     document.getElementById("quest-container").remove();
-  };
+  }
 };
 // Remove score board
 const removeScoreBoard = () => {
@@ -435,14 +437,20 @@ const removeScoreBoard = () => {
 // ---------- Countdown ----------
 // This is a countdown function
 const countDown = () => {
+  console.log("Countdown Function");
+
   let timeIntervals = setInterval(function () {
     startTime--;
     countdownEl.textContent = startTime;
     if (startTime <= 0) {
       countdownEl.textContent = 0;
       clearInterval(timeIntervals);
+      console.log("bug one");
       removeQuestion();
-      if(!document.getElementById("feedback-form")  && !document.getElementById("score-board")){
+      if (
+        !document.getElementById("feedback-form") &&
+        !document.getElementById("score-board")
+      ) {
         renderForm();
       }
     }
@@ -470,4 +478,4 @@ const handleStartButtonClick = () => {
 startButton.addEventListener("click", handleStartButtonClick);
 
 // Event listerner to Scores
-highScoreButton.addEventListener("click", showHighScore)
+highScoreButton.addEventListener("click", showHighScore);
